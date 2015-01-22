@@ -7,6 +7,10 @@ Debian Wheezy.
 
 This formula requires the apache-formula and the python-augeas package.
 
+The dnsmasq template also assumes that there is a working DHCP server
+somewhere else on the network, dnsmasq is configured for PXE booting
+hosts that cobbler knows about.
+
 .. note::
 
     See the full `Salt Formulas installation and usage instructions
