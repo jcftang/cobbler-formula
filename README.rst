@@ -22,7 +22,7 @@ Available states
 .. contents::
     :local:
 
-``cobbler.init``
-----------------
+``cobbler``
+-----------
 
 Installs the cobbler package, and starts the associated cobbler service.
