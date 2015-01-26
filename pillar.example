@@ -10,3 +10,12 @@ cobbler:
   manage_tftpd: 1
   tftpd_module: manage_in_tftpd
   pxe_just_once: 1
+  default_virt_bridge: virbr0
+  default_virt_type: qemu
+
+apache:
+  modules:
+    enabled:
+      - proxy
+      - proxy_http
+      - version

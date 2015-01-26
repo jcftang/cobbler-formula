@@ -11,6 +11,7 @@
 
 include:
   - apache
+  - apache.modules
 
 cobbler-deps:
   pkg.installed:
@@ -40,13 +41,6 @@ cobbler:
   service.running:
     - name: cobblerd
     - enable: True
-
-cobbler-apache-mods:
-  cmd.run:
-    - name: a2enmod proxy && a2enmod proxy_http && a2enmod version && touch /etc/cobbler/apache_mods_enabled
-    - creates: /etc/cobbler/apache_mods_enabled
-    - watch_in:
-      - service: apache
 
 cobbler-settings-config:
   augeas.change:
