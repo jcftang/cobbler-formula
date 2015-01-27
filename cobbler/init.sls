@@ -87,9 +87,11 @@ cobbler-tftpd-config:
 /tftpboot:
   file.directory
 
-{%  if grains['os'] == 'Ubuntu' %}
+{% if grains['os'] == 'Ubuntu' %}
+{% if grains['osrelease_info'][0] <= 12  %}
 /usr/share/cobbler/web/cobbler_web/urls.py:
   file.replace:
     - pattern: "from django.conf.urls import patterns"
     - repl: "from django.conf.urls.defaults import *"
+{% endif %}
 {% endif %}
