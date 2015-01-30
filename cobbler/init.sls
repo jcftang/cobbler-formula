@@ -57,6 +57,8 @@ cobbler-settings-config:
       - set default_virt_type {{ get_config('default_virt_type', 'xenpv') }}
     - watch_in:
       - service: cobblerd
+    - require_in:
+      - pkg: cobbler
 
 cobbler-modules-config:
   augeas.change:
