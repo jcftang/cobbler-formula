@@ -29,6 +29,8 @@ cobbler-repo:
     - dist: ./
     - file: /etc/apt/sources.list.d/cobbler.list
     - key_url: salt://cobbler/files/Release.key
+    - require_in:
+      - pkg: cobbler
 {% endif %}
 
 cobbler:
@@ -36,8 +38,6 @@ cobbler:
     - refresh: True
     - watch_in:
       - service: apache
-  require:
-    - name: cobbler-repo
   service.running:
     - name: cobblerd
     - enable: True
@@ -57,8 +57,8 @@ cobbler-settings-config:
       - set default_virt_type {{ get_config('default_virt_type', 'xenpv') }}
     - watch_in:
       - service: cobblerd
-    - require_in:
-      - pkg: cobbler
+  require:
+    - pkg: cobbler
 
 cobbler-modules-config:
   augeas.change:
@@ -69,18 +69,24 @@ cobbler-modules-config:
       - set tftpd/module {{ get_config('tftpd_module', 'manage_in_tftpd') }}
     - watch_in:
       - service: cobblerd
+  require:
+    - pkg: cobbler
 
 cobbler-dnsmasq-config:
   file.managed:
     - source: salt://cobbler/files/dnsmasq.template
     - name: /etc/cobbler/dnsmasq.template
     - template: jinja
+  require:
+    - pkg: cobbler
 
 cobbler-tftpd-config:
   file.managed:
     - source: salt://cobbler/files/tftpd.template
     - name: /etc/cobbler/tftpd.template
     - template: jinja
+  require:
+    - pkg: cobbler
 
 /var/lib/cobbler/webui_sessions:
   file.directory:
