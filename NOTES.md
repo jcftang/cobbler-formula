@@ -1,3 +1,8 @@
+Importing distros
+
+    mount -o loop ubuntu-12.04.5-server-amd64.iso /mnt/
+    cobbler import --path=/mnt --name=precise
+
 Kernel boot options for getting serial console working...
 
     Kernel Options: serial console=ttyS0,115200
