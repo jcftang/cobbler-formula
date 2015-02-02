@@ -103,3 +103,8 @@ cobbler-tftpd-config:
     - repl: "from django.conf.urls.defaults import *"
 {% endif %}
 {% endif %}
+
+kickstarts:
+  file.recurse:
+    - source: salt://cobbler/files/kickstarts/
+    - name: /var/lib/cobbler/kickstarts/
