@@ -12,6 +12,7 @@ cobbler:
   pxe_just_once: 1
   default_virt_bridge: virbr0
   default_virt_type: qemu
+  register_new_installs: 1
 
 apache:
   modules:

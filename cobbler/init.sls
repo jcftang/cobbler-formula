@@ -55,6 +55,7 @@ cobbler-settings-config:
       - set pxe_just_once {{ get_config('pxe_just_once', 0) }}
       - set default_virt_bridge {{ get_config('default_virt_bridge', 'xenbr0') }}
       - set default_virt_type {{ get_config('default_virt_type', 'xenpv') }}
+      - set register_new_installs {{ get_config('register_new_installs', '0') }}
     - watch_in:
       - service: cobblerd
   require:
