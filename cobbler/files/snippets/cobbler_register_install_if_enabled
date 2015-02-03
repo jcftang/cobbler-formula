@@ -1,0 +1,4 @@
+#if $str($getVar('register_new_installs','')) in [ "1", "true", "yes", "y" ]
+koan
+python-ethtool
+#end if

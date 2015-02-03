@@ -109,3 +109,8 @@ kickstarts:
   file.recurse:
     - source: salt://cobbler/files/kickstarts/
     - name: /var/lib/cobbler/kickstarts/
+
+snippets:
+  file.recurse:
+    - source: salt://cobbler/files/snippets/
+    - name: /var/lib/cobbler/snippets/
