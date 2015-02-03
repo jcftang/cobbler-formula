@@ -23,10 +23,11 @@ dhcp-range={{ get_config('dnsmasq-dhcp-range', '192.168.1.5,192.168.1.200,proxy'
 dhcp-option=3,$next_server
 dhcp-lease-max=1000
 dhcp-authoritative
-dhcp-boot=pxelinux.0
-dhcp-boot=net:normalarch,pxelinux.0
-dhcp-boot=net:ia64,$elilo
 
+pxe-prompt="Press F8 for boot menu", 3
+
+pxe-service=X86-64_EFI, "Boot PXELinux (=Cobbler controlled)", grub/grub-x86_64.efi , $next_server
+pxe-service=IA32_EFI, "Boot PXELinux (=Cobbler controlled)", grub/grub-x86.efi , $next_server
 pxe-service=x86PC, "Boot PXELinux (=Cobbler controlled)", pxelinux , $next_server
 
 $insert_cobbler_system_definitions
